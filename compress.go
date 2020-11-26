@@ -3,11 +3,9 @@ package goparquet
 import (
 	"bytes"
 	"compress/gzip"
+	"github.com/pkg/errors"
 	"io"
 	"io/ioutil"
-	"sync"
-
-	"github.com/pkg/errors"
 
 	"github.com/fraugster/parquet-go/parquet"
 	"github.com/golang/snappy"
@@ -15,7 +13,6 @@ import (
 
 var (
 	compressors    = make(map[parquet.CompressionCodec]BlockCompressor)
-	compressorLock sync.RWMutex
 )
 
 type (
@@ -76,9 +73,6 @@ func (gzipCompressor) DecompressBlock(block []byte) ([]byte, error) {
 }
 
 func compressBlock(block []byte, method parquet.CompressionCodec) ([]byte, error) {
-	compressorLock.RLock()
-	defer compressorLock.RUnlock()
-
 	c, ok := compressors[method]
 	if !ok {
 		return nil, errors.Errorf("method %q is not supported", method.String())
@@ -88,9 +82,6 @@ func compressBlock(block []byte, method parquet.CompressionCodec) ([]byte, error
 }
 
 func decompressBlock(block []byte, method parquet.CompressionCodec) ([]byte, error) {
-	compressorLock.RLock()
-	defer compressorLock.RUnlock()
-
 	c, ok := compressors[method]
 	if !ok {
 		return nil, errors.Errorf("method %q is not supported", method.String())
@@ -128,9 +119,6 @@ func newBlockReader(in io.Reader, codec parquet.CompressionCodec, compressedSize
 // algorithms, please provide your own implementation of it in a way that satisfies the BlockCompressor interface,
 // and register it using this function from your code.
 func RegisterBlockCompressor(method parquet.CompressionCodec, compressor BlockCompressor) {
-	compressorLock.Lock()
-	defer compressorLock.Unlock()
-
 	compressors[method] = compressor
 }
 
@@ -138,10 +126,6 @@ func RegisterBlockCompressor(method parquet.CompressionCodec, compressor BlockCo
 // are currently registered.
 func GetRegisteredBlockCompressors() map[parquet.CompressionCodec]BlockCompressor {
 	result := make(map[parquet.CompressionCodec]BlockCompressor)
-
-	compressorLock.Lock()
-	defer compressorLock.Unlock()
-
 	for k, v := range compressors {
 		result[k] = v
 	}
