@@ -1,4 +1,4 @@
-module github.com/fraugster/parquet-go
+module github.com/sagia-inneractive/parquet-go
 
 go 1.13
 
