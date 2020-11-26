@@ -8,7 +8,7 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	goparquet "github.com/fraugster/parquet-go"
+	goparquet "github.com/sagia-inneractive/parquet-go"
 )
 
 func catFile(w io.Writer, address string, n int) error {

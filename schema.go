@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/fraugster/parquet-go/parquet"
-	"github.com/fraugster/parquet-go/parquetschema"
+	"github.com/sagia-inneractive/parquet-go/parquet"
+	"github.com/sagia-inneractive/parquet-go/parquetschema"
 	"github.com/pkg/errors"
 )
 

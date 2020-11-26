@@ -6,12 +6,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/fraugster/parquet-go/floor/interfaces"
+	"github.com/sagia-inneractive/parquet-go/floor/interfaces"
 
 	"github.com/davecgh/go-spew/spew"
-	goparquet "github.com/fraugster/parquet-go"
-	"github.com/fraugster/parquet-go/parquet"
-	"github.com/fraugster/parquet-go/parquetschema"
+	goparquet "github.com/sagia-inneractive/parquet-go"
+	"github.com/sagia-inneractive/parquet-go/parquet"
+	"github.com/sagia-inneractive/parquet-go/parquetschema"
 	"github.com/stretchr/testify/require"
 )
 

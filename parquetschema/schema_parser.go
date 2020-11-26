@@ -10,7 +10,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/fraugster/parquet-go/parquet"
+	"github.com/sagia-inneractive/parquet-go/parquet"
 )
 
 type item struct {

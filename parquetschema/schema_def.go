@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/fraugster/parquet-go/parquet"
+	"github.com/sagia-inneractive/parquet-go/parquet"
 )
 
 // SchemaDefinition represents a valid textual schema definition.

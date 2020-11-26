@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/fraugster/parquet-go/parquet"
+	"github.com/sagia-inneractive/parquet-go/parquet"
 	"github.com/stretchr/testify/assert"
 )
 

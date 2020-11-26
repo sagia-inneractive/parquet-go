@@ -7,10 +7,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/fraugster/parquet-go/parquetschema"
+	"github.com/sagia-inneractive/parquet-go/parquetschema"
 
-	goparquet "github.com/fraugster/parquet-go"
-	"github.com/fraugster/parquet-go/parquet"
+	goparquet "github.com/sagia-inneractive/parquet-go"
+	"github.com/sagia-inneractive/parquet-go/parquet"
 )
 
 func main() {

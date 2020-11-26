@@ -6,7 +6,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/fraugster/parquet-go/parquetschema"
+	"github.com/sagia-inneractive/parquet-go/parquetschema"
 	"github.com/stretchr/testify/require"
 )
 
